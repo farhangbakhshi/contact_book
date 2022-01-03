@@ -5,7 +5,8 @@ from contact import Contact
 class Core:
     def __init__(self, file_handler):
         self.file_handler = file_handler
-        self.contactlist = json.loads(file_handler.file.read())
+        self.contactlist = json.loads(file_handler.read_file())
+        
         for x in range(len(self.contactlist)):
             contact_name = self.contactlist[x]["name"]
             contact_number = self.contactlist[x]["number"]
