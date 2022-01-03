@@ -34,3 +34,10 @@ class Core:
         for x in self.contactlist:
             names_list.append(x.get_name())
         return names_list
+
+    def search(self, s_phrase):
+        results_list = []
+        for x in self.contactlist:
+            if s_phrase in x.get_name():
+                results_list.append(x.get_name())
+        return results_list

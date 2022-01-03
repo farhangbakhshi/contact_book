@@ -22,8 +22,14 @@ class Interface:
                 self.add_contact()
             elif user_choice == 1:
                 contact_list = self.core.get_contact_names()
-                for x in contact_list:
-                    print(x)
+                for x in range(len(contact_list)):
+                    print(str(x + 1) + ". " + contact_list[x])
+            elif user_choice == 2:
+                s_phrase = input("search for: ")
+                results_list = self.core.search(s_phrase)
+                for x in range(len(results_list)):
+                    print(str(x + 1) + ". " + results_list[x])
+
 
     def add_contact(self):
         new_contact_name = input("what is the name? ")
