@@ -2,7 +2,8 @@ from contact import Contact
 
 class Interface:
     main_menu = ["1. view contact list", "2. search in contacts", "3. add a contact", "4. quit"]
-    
+    contact_view_menu = ["1. edit", "2. delete"]
+
     def __init__(self, core):
         self.core = core
 
@@ -18,8 +19,10 @@ class Interface:
             if user_choice == 4:
                 quit()
             elif user_choice == 3:
-                new_contact_name = input("what is the name? ")
-                new_contact_number = input("what is the number? ")
-                new_contact_address = input("what is the address? ")
-                new_contact = Contact(new_contact_name, new_contact_number, new_contact_address)
-                print(new_contact)
+                self.add_contact()
+
+    def add_contact(self):
+        new_contact_name = input("what is the name? ")
+        new_contact_number = input("what is the number? ")
+        new_contact_address = input("what is the address? ")
+        self.core.add_contact(new_contact_name, new_contact_number, new_contact_address)
