@@ -28,3 +28,9 @@ class Core:
             contact_in_dict = {"name":self.contactlist[x].get_name(), "number":self.contactlist[x].get_number(), "address":self.contactlist[x].get_address()}
             list_for_json.append(contact_in_dict)
         self.file_handler.write_file(json.dumps(list_for_json))
+
+    def get_contact_names(self):
+        names_list = []
+        for x in self.contactlist:
+            names_list.append(x.get_name())
+        return names_list

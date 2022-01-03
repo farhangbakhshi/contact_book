@@ -20,6 +20,10 @@ class Interface:
                 quit()
             elif user_choice == 3:
                 self.add_contact()
+            elif user_choice == 1:
+                contact_list = self.core.get_contact_names()
+                for x in contact_list:
+                    print(x)
 
     def add_contact(self):
         new_contact_name = input("what is the name? ")
