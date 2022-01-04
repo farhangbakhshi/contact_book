@@ -18,17 +18,44 @@ class Interface:
             user_choice = self.show_menu()
             if user_choice == 4:
                 quit()
+            
             elif user_choice == 3:
                 self.add_contact()
+            
             elif user_choice == 1:
                 contact_list = self.core.get_contact_names()
+                
                 for x in range(len(contact_list)):
                     print(str(x + 1) + ". " + contact_list[x])
+                
+                print("select a contact to show details (enter 0 to go back to main menu)")
+                contact_choice = int(input("? "))
+                
+                if contact_choice == 0:
+                    continue
+                else:
+                    contact_details = self.core.get_contact_details(contact_choice, "")
+                    print("name: " + contact_details[0])
+                    print("number: " + contact_details[1])
+                    print("address: " + contact_details[2])
+            
             elif user_choice == 2:
                 s_phrase = input("search for: ")
                 results_list = self.core.search(s_phrase)
+                
                 for x in range(len(results_list)):
                     print(str(x + 1) + ". " + results_list[x])
+                
+                print("select a contact to show details (enter 0 to go back to main menu)")
+                contact_choice = int(input("? "))
+                
+                if contact_choice == 0:
+                    continue
+                else:
+                    contact_details = self.core.get_contact_details(contact_choice, s_phrase)
+                    print("name: " + contact_details[0])
+                    print("number: " + contact_details[1])
+                    print("address: " + contact_details[2])
 
 
     def add_contact(self):

@@ -35,9 +35,21 @@ class Core:
             names_list.append(x.get_name())
         return names_list
 
-    def search(self, s_phrase):
+    def search(self, s_phrase, in_core_search = False):
         results_list = []
         for x in self.contactlist:
             if s_phrase in x.get_name():
-                results_list.append(x.get_name())
+                if in_core_search:
+                    results_list.append(x)
+                else:
+                    results_list.append(x.get_name())
         return results_list
+
+    def get_contact_details(self, index, s_phrase):
+        if s_phrase == "":
+            details = [self.contactlist[index - 1].get_name(), self.contactlist[index - 1].get_number(), self.contactlist[index - 1].get_address()]
+            return details
+        else:
+            results = self.search(s_phrase, True)
+            details = [results[index - 1].get_name(), results[index - 1].get_number(), results[index - 1].get_address()]
+            return details
