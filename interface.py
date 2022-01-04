@@ -28,16 +28,7 @@ class Interface:
                 for x in range(len(contact_list)):
                     print(str(x + 1) + ". " + contact_list[x])
                 
-                print("select a contact to show details (enter 0 to go back to main menu)")
-                contact_choice = int(input("? "))
-                
-                if contact_choice == 0:
-                    continue
-                else:
-                    contact_details = self.core.get_contact_details(contact_choice, "")
-                    print("name: " + contact_details[0])
-                    print("number: " + contact_details[1])
-                    print("address: " + contact_details[2])
+                self.view_contact_details("")
             
             elif user_choice == 2:
                 s_phrase = input("search for: ")
@@ -46,20 +37,24 @@ class Interface:
                 for x in range(len(results_list)):
                     print(str(x + 1) + ". " + results_list[x])
                 
-                print("select a contact to show details (enter 0 to go back to main menu)")
-                contact_choice = int(input("? "))
+                self.view_contact_details(s_phrase)
                 
-                if contact_choice == 0:
-                    continue
-                else:
-                    contact_details = self.core.get_contact_details(contact_choice, s_phrase)
-                    print("name: " + contact_details[0])
-                    print("number: " + contact_details[1])
-                    print("address: " + contact_details[2])
-
+                
 
     def add_contact(self):
         new_contact_name = input("what is the name? ")
         new_contact_number = input("what is the number? ")
         new_contact_address = input("what is the address? ")
         self.core.add_contact(new_contact_name, new_contact_number, new_contact_address)
+
+    def view_contact_details(self, s_phrase):
+        print("select a contact to show details (enter 0 to go back to main menu)")
+        contact_choice = int(input("? "))
+                
+        if contact_choice == 0:
+            return
+        else:
+                contact_details = self.core.get_contact_details(contact_choice, s_phrase)
+                print("name: " + contact_details[0])
+                print("number: " + contact_details[1])
+                print("address: " + contact_details[2])
