@@ -1,5 +1,5 @@
 class FileHandler:
-    file_address = "contacts.json"
+    file_address = "data.json"
 
     def read_file(self):
         file = open(self.file_address, "rt")
