@@ -1,5 +1,6 @@
 import uuid
 
+
 class Contact:
 
     neme = None
