@@ -19,6 +19,7 @@ class Core:
         # setting the attributes. for now, we read the file and use contact_list for the dictionaries read from the json file.
         self.file_handler = file_handler
         self.contact_list = json.loads(file_handler.read_file())
+        if self.contact_list == {} : self.contact_list = []
         # now we replace each dictionary in contact_list with a Contact object made with the info from the same dictionary.
         for x in range(len(self.contact_list)):
             self.contact_list[x] = Contact(
